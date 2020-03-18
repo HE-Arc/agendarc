@@ -25,6 +25,9 @@ public class Calendar {
 
     @ManyToMany
     private Set<User> users;
+    
+    public Calendar() {
+    }
 
     public Long getId() {
 		return id;
@@ -61,6 +64,9 @@ public class Calendar {
     {
         this.users = users;
     }
-    
 
+    @Override
+    public String toString() {
+        return "Calendar [id=" + id + ", name=" + name + ", owner=" + owner + ", users=" + users + "]";
+    }
 }
