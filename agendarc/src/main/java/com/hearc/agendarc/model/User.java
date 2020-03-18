@@ -1,4 +1,4 @@
-package com.hearc.agendarc.models;
+package com.hearc.agendarc.model;
 
 import java.util.Set;
 
@@ -10,16 +10,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private String pwd;
+
+    @ManyToMany
+    private Set<Role> roles;
 
 	public Long getId() {
 		return id;
@@ -37,16 +39,23 @@ public class Role {
 		this.name = name;
 	}
 
-
-	public Set<User> getUsers() {
-		return users;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
-	public Role() {
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public User() {
 		super();
 	}
 

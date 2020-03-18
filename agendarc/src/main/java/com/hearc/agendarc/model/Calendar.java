@@ -1,4 +1,4 @@
-package com.hearc.agendarc.models;
+package com.hearc.agendarc.model;
 
 import java.util.Set;
 
@@ -7,23 +7,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "calendar")
+public class Calendar {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String pwd;
+    @ManyToOne
+    private User owner;
 
     @ManyToMany
-    private Set<Role> roles;
+    private Set<User> users;
 
-	public Long getId() {
+    public Long getId() {
 		return id;
 	}
 
@@ -39,24 +42,25 @@ public class User {
 		this.name = name;
 	}
 
-	public String getPwd() {
-		return pwd;
-	}
+    public User getOwner()
+    {
+        return owner;
+    }
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+    public void setOwner(User owner)
+    {
+        this.owner = owner;
+    }
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    public Set<User> getUsers()
+    {
+        return users;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
-	public User() {
-		super();
-	}
+    public void setUsers(Set<User> users)
+    {
+        this.users = users;
+    }
+    
 
 }
