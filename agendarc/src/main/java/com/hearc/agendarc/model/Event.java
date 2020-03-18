@@ -25,7 +25,7 @@ public class Event {
     private String details;
 
     @ManyToOne
-    private User creator;
+    private Utilisateur creator;
 
     @ManyToOne
     private Calendar calendar;
@@ -66,12 +66,12 @@ public class Event {
         this.details = details;
     }
 
-    public User getCreator()
+    public Utilisateur getCreator()
     {
         return creator;
     }
 
-    public void setCreator(User creator)
+    public void setCreator(Utilisateur creator)
     {
         this.creator = creator;
     }

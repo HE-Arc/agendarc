@@ -21,10 +21,10 @@ public class Calendar {
     private String name;
 
     @ManyToOne
-    private User owner;
+    private Utilisateur owner;
 
     @ManyToMany
-    private Set<User> users;
+    private Set<Utilisateur> users;
 
     public Long getId() {
 		return id;
@@ -42,22 +42,22 @@ public class Calendar {
 		this.name = name;
 	}
 
-    public User getOwner()
+    public Utilisateur getOwner()
     {
         return owner;
     }
 
-    public void setOwner(User owner)
+    public void setOwner(Utilisateur owner)
     {
         this.owner = owner;
     }
 
-    public Set<User> getUsers()
+    public Set<Utilisateur> getUsers()
     {
         return users;
     }
 
-    public void setUsers(Set<User> users)
+    public void setUsers(Set<Utilisateur> users)
     {
         this.users = users;
     }

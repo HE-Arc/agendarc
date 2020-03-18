@@ -5,15 +5,22 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
+
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication() //spécifie à Spring que l'authentification se fera "en mémoire"
-                .withUser("user").password("{noop}password").roles("USER"); //{noop}, pas de cryptage
-    }
+      auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+   }
     
     @Override
 	protected void configure(HttpSecurity http) throws Exception {
