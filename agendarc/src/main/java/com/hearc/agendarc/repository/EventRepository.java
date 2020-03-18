@@ -1,6 +1,6 @@
 package com.hearc.agendarc.repository;
 
-import com.hearc.agendarc.models.Event;
+import com.hearc.agendarc.model.Event;
 
 import org.springframework.data.repository.CrudRepository;
 

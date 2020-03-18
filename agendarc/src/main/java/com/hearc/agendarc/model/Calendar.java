@@ -1,4 +1,4 @@
-package com.hearc.agendarc.models;
+package com.hearc.agendarc.model;
 
 import java.util.Set;
 
