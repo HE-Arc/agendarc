@@ -14,23 +14,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hearc.agendarc.model.Role;
-import com.hearc.agendarc.model.Utilisateur;
 import com.hearc.agendarc.repository.UtilisateurRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
   @Autowired
-  private UtilisateurRepository utilisateurRepository;
+  private UtilisateurRepository userRepository;
   
   @Override
   @Transactional(readOnly = true)
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    Utilisateur utilisateur = utilisateurRepository.findByName(username);
-    if (utilisateur == null) throw new UsernameNotFoundException(username);
+  public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+    final com.hearc.agendarc.model.User utilisateur = userRepository.findByName(username);
+    if (utilisateur == null)
+      throw new UsernameNotFoundException(username);
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : utilisateur.getRoles()){
+    final Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+    for (final Role role : utilisateur.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 

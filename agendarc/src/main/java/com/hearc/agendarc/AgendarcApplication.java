@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.hearc.agendarc.model.Role;
-import com.hearc.agendarc.model.Utilisateur;
+import com.hearc.agendarc.model.User;
 import com.hearc.agendarc.repository.RoleRepository;
 import com.hearc.agendarc.repository.UtilisateurRepository;
 
@@ -47,7 +47,7 @@ public class AgendarcApplication {
 	  roleRepo.save(roleAdmin);
 	  
 	  //creation de l'utilisateur
-	  Utilisateur u = new Utilisateur();
+	  User u = new User();
 	  u.setName("admin");
 	  u.setPwd((bCryptPasswordEncoder.encode("password")));
 	  	  
