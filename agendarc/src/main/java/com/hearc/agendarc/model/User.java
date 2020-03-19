@@ -55,7 +55,7 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Utilisateur() {
+	public User() {
 		super();
 	}
 
