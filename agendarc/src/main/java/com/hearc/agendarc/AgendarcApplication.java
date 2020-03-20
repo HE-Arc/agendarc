@@ -42,18 +42,35 @@ public class AgendarcApplication {
 		// Création du role admin
 		final Role roleAdmin = new Role();
 		roleAdmin.setName("ROLE_ADMIN");
+		
+		final Role roleUser = new Role();
+		roleUser.setName("ROLE_USER");
+		roleRepo.save(roleUser);
 		roleRepo.save(roleAdmin);
+
+		
 
 		// creation de l'utilisateur
 		final User u = new User();
+		final User u2=new User();
+		
 		u.setName("admin");
+		u.setSurname("admin");
+		u.setUsername("admin");
 		u.setPwd((bCryptPasswordEncoder.encode("password")));
+		
+		u2.setName("test");
+		u2.setSurname("test");
+		u2.setUsername("test");
+		u2.setPwd((bCryptPasswordEncoder.encode("test1234")));
 
 		// Ajout des rôles à l'utilisateur
 		final Set<Role> roles = new HashSet<>();
 	  roles.add(roleAdmin);
 	  u.setRoles(roles);
+	  u2.setRoles(roles);
 	  userRepo.save(u);
+	  userRepo.save(u2);
 	  
 	}
 }
