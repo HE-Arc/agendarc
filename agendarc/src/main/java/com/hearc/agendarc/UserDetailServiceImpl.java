@@ -34,11 +34,14 @@ public class UserDetailServiceImpl implements UserDetailsService {
     
     //ajouter verification username
 
-     Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+
+    Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
     for (final Role role : utilisateur.getRoles()) {
+
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
     
         return new User(utilisateur.getUsername(), utilisateur.getPwd(), grantedAuthorities);
   }
+
 }

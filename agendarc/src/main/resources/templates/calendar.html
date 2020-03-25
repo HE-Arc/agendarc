@@ -1,12 +1,16 @@
-<H1>LEL</H1>
-<!--  **************** logout ****************** -->
-<div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
-            Utilisateur: <span sec:authentication="name">[]</span>
-            Roles: <span sec:authentication="principal.authorities"></span> 
-    <div>
-        <form action="#" th:action="@{/logout}" method="post"> 
-            <input type="submit" value="Logout" />
-        </form>
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+    <H1>LEL</H1>
+    <!--  **************** logout ****************** -->
+    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
+                Utilisateur: <span sec:authentication="name">[]</span>
+                Roles: <span sec:authentication="principal.authorities"></span> 
+        <div>
+            <form action="#" th:action="@{/logout}" method="post"> 
+                <input type="submit" value="Logout" />
+            </form>
+        </div>
     </div>
     
         <div>
