@@ -42,35 +42,23 @@ public class RegisterController {
     	return "register";
 	}
     
+
+    
 	@PostMapping("/add")
 	public String add(@ModelAttribute ("user") User user) {
 
-//		user.setName(user.getName());
-//		user.setSurname(user.getSurname());
-//		user.setUsername(user.getUsername());
+		System.out.println(user.getPwd());
+
 		user.setPwd((bCryptPasswordEncoder.encode(user.getPwd())));
 		System.out.println(user.getName());
 		System.out.println(user.getSurname());
 		System.out.println(user.getPwd());
 		System.out.println(user.getUsername());
-		
-		/*
-		final Role roleUser = new Role();
-		roleUser.setName("ROLE_USER");
-		roleRepo.save(roleUser);
-		
-		final Set<Role> roles = new HashSet<>();
-		  roles.add(roleUser);
-		  user.setRoles(roles);
-		  */
 
-		
 		userRepo.save(user);
 
-	
-		ArrayList<User> users = (ArrayList<User>) userRepo.findAll();
-		
-		return "redirect:/";
+			
+		return "redirect:/login";
 	}
 	
 }

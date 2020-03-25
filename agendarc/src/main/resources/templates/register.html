@@ -6,8 +6,8 @@
 <body>
 	<h1>Form</h1>
     <form th:action="@{/add}" action="#" th:object="${user}" method="post">
-    	<p>Nom <input type="text" th:field="*{name}" /></p>
-        <p>Prénom: <input type="text" th:field="*{surname}" /></p>
+    	<p>Nom <input type="text" th:field="*{surname}" /></p>
+        <p>Prénom: <input type="text" th:field="*{name}" /></p>
         <p>Username: <input type="text" th:field="*{username}" /></p> 
         <p>Mot de passe: <input type="password" th:field="*{pwd}" /></p>
         

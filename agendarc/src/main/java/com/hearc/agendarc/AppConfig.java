@@ -9,6 +9,7 @@ import com.hearc.agendarc.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class AppConfig {
@@ -19,13 +20,16 @@ public class AppConfig {
 	@Autowired
 	CalendarRepository calendarRepository;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@PostConstruct
 	public void init() {
         User u = new User();
         u.setName("Dave");
         u.setSurname("Silva");
         u.setUsername("dave");
-        u.setPwd("test");
+		u.setPwd(bCryptPasswordEncoder.encode("password"));
         userRepository.save(u);
 
         Calendar c = new Calendar();

@@ -57,12 +57,14 @@ public class AgendarcApplication {
 		u.setName("admin");
 		u.setSurname("admin");
 		u.setUsername("admin");
-		u.setPwd((bCryptPasswordEncoder.encode("password")));
+		u.setPwd(bCryptPasswordEncoder.encode("password"));
 		
-		u2.setName("test");
-		u2.setSurname("test");
-		u2.setUsername("test");
-		u2.setPwd((bCryptPasswordEncoder.encode("test1234")));
+        u2.setName("Prêtre");
+        u2.setSurname("Denis");
+        u2.setUsername("denisdenis");
+        u2.setPwd(bCryptPasswordEncoder.encode("password"));
+		
+
 
 		// Ajout des rôles à l'utilisateur
 		final Set<Role> roles = new HashSet<>();

@@ -1,0 +1,26 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+					Bonjour  <span th:text="${userConnected.name}">[]</span>  <span th:text="${userConnected.surname}">[]</span>  
+					<p>	Votre nom d'utilisateur: <span th:text="${userConnected.username}">[]</span></p>
+				<div>
+				<p>Vous participez actuellement à X calendriers/événements</p>
+				<p>Liste de vos calendriers/événements</p>
+				<p>AFFICHER SELON USER!</p>
+				</div>
+                </div>             
+              
+            </div>            
+               </div>
+		</div>
+	</div>
+</div>
