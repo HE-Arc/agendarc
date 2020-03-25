@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Création de calendrier</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Création de calendrier</h1>
+    <form th:action="@{/newCalendar}" action="#" th:object="${calendar}" method="post">
+    	<p>Nom du calendrier: <input type="text" th:field="*{name}" /></p>
+        
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+</html>
