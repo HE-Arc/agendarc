@@ -1,12 +1,13 @@
 package com.hearc.agendarc;
 
+import java.security.Principal;
+
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.User;
 import com.hearc.agendarc.repository.CalendarRepository;
+import com.hearc.agendarc.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,9 @@ public class CalendarController{
     
 	@Autowired
 	CalendarRepository calendarRepository;
+
+	@Autowired
+	UserRepository userRepository;
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String test() {
@@ -40,9 +44,8 @@ public class CalendarController{
 	}
 
 	@PostMapping("/newCalendar")
-	public String newCalendar(@ModelAttribute ("calendar") Calendar calendar, @AuthenticationPrincipal User user) {
-		//User owner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+	public String newCalendar(@ModelAttribute ("calendar") Calendar calendar, Principal principal) {
+		User user = userRepository.findByName(principal.getName());
 		calendar.setOwner(user);
 
 		calendarRepository.save(calendar);
