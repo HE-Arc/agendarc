@@ -48,8 +48,6 @@ public class AgendarcApplication {
 		roleRepo.save(roleUser);
 		roleRepo.save(roleAdmin);
 
-		
-
 		// creation de l'utilisateur
 		final User u = new User();
 		final User u2=new User();
@@ -66,13 +64,12 @@ public class AgendarcApplication {
 
 		// Ajout des rôles à l'utilisateur
 		final Set<Role> roles = new HashSet<>();
-	  roles.add(roleAdmin);
-	  //roles.add(roleUser);
+		roles.add(roleAdmin);
+		//roles.add(roleUser);
 
-	  u.setRoles(roles);
-	  u2.setRoles(roles);
-	  userRepo.save(u);
-	  userRepo.save(u2);
-	  
+		u.setRoles(roles);
+		u2.setRoles(roles);
+		userRepo.save(u);
+		userRepo.save(u2);
 	}
 }
