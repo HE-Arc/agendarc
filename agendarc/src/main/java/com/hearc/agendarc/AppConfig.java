@@ -22,7 +22,10 @@ public class AppConfig {
 	@PostConstruct
 	public void init() {
         User u = new User();
-        u.setName("George");
+        u.setName("Dave");
+        u.setSurname("Silva");
+        u.setUsername("dave");
+        u.setPwd("test");
         userRepository.save(u);
 
         Calendar c = new Calendar();
