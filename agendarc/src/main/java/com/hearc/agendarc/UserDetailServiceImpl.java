@@ -25,15 +25,17 @@ public class UserDetailServiceImpl implements UserDetailsService {
   @Override
   @Transactional(readOnly = true)
   public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-    final com.hearc.agendarc.model.User utilisateur = userRepository.findByName(username);
+    
+	com.hearc.agendarc.model.User utilisateur = userRepository.findByName(username);
+	System.out.println(utilisateur.getName());
     if (utilisateur == null)
       throw new UsernameNotFoundException(username);
 
-    final Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+     Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
     for (final Role role : utilisateur.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
+    
         return new User(utilisateur.getName(), utilisateur.getPwd(), grantedAuthorities);
   }
 }

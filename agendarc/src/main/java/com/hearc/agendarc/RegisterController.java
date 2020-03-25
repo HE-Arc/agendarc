@@ -54,6 +54,7 @@ public class RegisterController {
 		System.out.println(user.getPwd());
 		System.out.println(user.getUsername());
 		
+		/*
 		final Role roleUser = new Role();
 		roleUser.setName("ROLE_USER");
 		roleRepo.save(roleUser);
@@ -61,6 +62,7 @@ public class RegisterController {
 		final Set<Role> roles = new HashSet<>();
 		  roles.add(roleUser);
 		  user.setRoles(roles);
+		  */
 
 		
 		userRepo.save(user);

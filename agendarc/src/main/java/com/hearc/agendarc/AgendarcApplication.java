@@ -67,6 +67,8 @@ public class AgendarcApplication {
 		// Ajout des rôles à l'utilisateur
 		final Set<Role> roles = new HashSet<>();
 	  roles.add(roleAdmin);
+	  //roles.add(roleUser);
+
 	  u.setRoles(roles);
 	  u2.setRoles(roles);
 	  userRepo.save(u);
