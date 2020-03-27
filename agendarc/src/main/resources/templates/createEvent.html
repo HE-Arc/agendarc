@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+	<h1>Création de calendrier</h1>
+    <form th:action="@{/createEvent}" action="#" method="post">
+    	<p>Nom de l'événement: <input type="text" th:field="${event.name}" /></p>
+        <p>Date : <input type="date" th:field="${event.date}" /></p>
+    	<p>Détails : <input type="text" th:field="${event.details}" /></p>
+        <select  class="form-control" required="required" name="cals" id="cals" th:field="${selectedcalendar.id}">
+            <option value=""> -- </option>
+            <option th:each="cal : ${calendars}" th:value="${cal.id}" th:text="${cal.name}" ></option>
+        </select>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</div>>
