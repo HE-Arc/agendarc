@@ -1,6 +1,7 @@
 package com.hearc.agendarc;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
   
   @Override
   @Transactional(readOnly = true)
-  public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+  public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException 
+  {
     
 	com.hearc.agendarc.model.User utilisateur = userRepository.findByUsername(username);
 	System.out.println(utilisateur.getName());
@@ -40,6 +42,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
 		grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 	}
 	return new User(utilisateur.getUsername(), utilisateur.getPwd(), grantedAuthorities);
-  	}
+  }
+  
+  public List<com.hearc.agendarc.model.User> findByUsernameLike(String username)
+  {
+  	return userRepository.findByUsernameLike("%"+username+"%");
+  }
+  
 
 }
