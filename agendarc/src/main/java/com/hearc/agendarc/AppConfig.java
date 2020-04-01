@@ -17,6 +17,9 @@ public class AppConfig {
 	@Autowired
     UserRepository userRepository;
     
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+    
 	@Autowired
 	CalendarRepository calendarRepository;
 	
@@ -26,10 +29,10 @@ public class AppConfig {
 	@PostConstruct
 	public void init() {
         User u = new User();
-        u.setName("Dave");
+        u.setName("dave");
         u.setSurname("Silva");
         u.setUsername("dave");
-		u.setPwd(bCryptPasswordEncoder.encode("password"));
+        u.setPwd((bCryptPasswordEncoder.encode("test")));
         userRepository.save(u);
 
         Calendar c = new Calendar();

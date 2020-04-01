@@ -45,7 +45,7 @@ public class CalendarController{
 
 	@PostMapping("/newCalendar")
 	public String newCalendar(@ModelAttribute ("calendar") Calendar calendar, Principal principal) {
-		User user = userRepository.findByName(principal.getName());
+		User user = userRepository.findByUsername(principal.getName());
 		calendar.setOwner(user);
 
 		calendarRepository.save(calendar);
