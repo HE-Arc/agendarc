@@ -12,8 +12,9 @@
 	<h2>Events</h2>
 	<div th:each="event : ${events}">
 		<div>
-			<h4 th:text="${event.name}"></h4>
-			<p th:text="${event.details}"></p>
+			<h5 ><u th:text="${event.name}"></u></h5>
+			<p th:text="${event.date}"></p>
+			<p> Details : <span th:text="${event.details}"></span></p>
 		</div>
 	</div>
 </div>
