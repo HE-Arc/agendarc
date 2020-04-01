@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+	<h1>Calendriers</h1>
+
+	<div th:each="calendar : ${calendars}">
+		<div>
+			<h3 th:text="${calendar.name}"></h3>
+			<p>Created by <span th:text="${calendar.owner.username}"></span> </p>
+			<a th:href="@{/calendar/} + '?id=' + ${calendar.id}">Show details</a>
+		</div>
+	</div>
+</div>
+

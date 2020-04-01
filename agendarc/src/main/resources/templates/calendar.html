@@ -1,21 +1,20 @@
+
 <!DOCTYPE html>
 <html th:replace="~{base :: layout( ~{::content})}">
 <div th:fragment="content">
-    <H1>LEL</H1>
-    <!--  **************** logout ****************** -->
-    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
-                Utilisateur: <span sec:authentication="name">[]</span>
-                Roles: <span sec:authentication="principal.authorities"></span> 
-        <div>
-            <form action="#" th:action="@{/logout}" method="post"> 
-                <input type="submit" value="Logout" />
-            </form>
-        </div>
-    </div>
-    
-        <div>
-        <form action="#" th:action="@{/profile}" method="post"> 
-            <input type="submit" value="profile" />
-        </form>
-    </div>
+	<h1 th:text="${calendar.name}">Calendrier</h1>
+		<div>
+			<p>Created by <span th:text="${calendar.owner.username}"></span> </p>
+			<ul th:each=" user : ${calendar.users}">
+				<li th:text="${user.username}"></li>
+			</ul>
+		</div>
+	<h2>Events</h2>
+	<div th:each="event : ${events}">
+		<div>
+			<h4 th:text="${event.name}"></h4>
+			<p th:text="${event.details}"></p>
+		</div>
+	</div>
 </div>
+
