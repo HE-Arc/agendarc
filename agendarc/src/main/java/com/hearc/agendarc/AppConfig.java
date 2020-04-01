@@ -23,9 +23,6 @@ public class AppConfig {
 	@Autowired
 	CalendarRepository calendarRepository;
 	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder;
-	
 	@PostConstruct
 	public void init() {
         User u = new User();
