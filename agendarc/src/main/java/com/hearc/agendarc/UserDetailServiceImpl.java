@@ -29,7 +29,11 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	com.hearc.agendarc.model.User utilisateur = userRepository.findByUsername(username);
 	System.out.println(utilisateur.getName());
     if (utilisateur == null)
-    	throw new UsernameNotFoundException(username);
+      throw new UsernameNotFoundException(username);
+   
+    
+    //ajouter verification username
+
 
     Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
     for (final Role role : utilisateur.getRoles()) {
@@ -37,4 +41,5 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	}
 	return new User(utilisateur.getUsername(), utilisateur.getPwd(), grantedAuthorities);
   	}
+
 }
