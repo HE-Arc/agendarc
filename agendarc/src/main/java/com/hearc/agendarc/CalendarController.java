@@ -13,6 +13,7 @@ import com.hearc.agendarc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,14 +32,20 @@ public class CalendarController{
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	UserDetailServiceImpl userService;
+	
+	@Autowired
+	CalendarService calendarService;
+
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String test() {
         return "home";
     }
     
     @RequestMapping(value = "/calendars", method=RequestMethod.GET)
-	public String liste(Model model) {
-		model.addAttribute("calendars", calendarRepository.findAll());
+	public String liste(Model model, @RequestParam(defaultValue="")  String name) {
+		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name));
 		return "calendars";
 	}
 
@@ -68,4 +75,10 @@ public class CalendarController{
 
 		return "redirect:/";
 	}
+
+	/*@GetMapping("/calendar")
+	public String listCalendars(Model model, @RequestParam(defaultValue="")  String name) {
+		model.addAttribute("calendar", userService.findByUsernameLike(name));
+		return "calendars";
+	}*/
 }

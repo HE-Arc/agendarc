@@ -4,12 +4,34 @@
 <div th:fragment="content">
 	<h1>Calendriers</h1>
 
-	<div th:each="calendar : ${calendars}">
-		<div>
-			<h3 th:text="${calendar.name}"></h3>
-			<p>Created by <span th:text="${calendar.owner.username}"></span> </p>
-			<a th:href="@{/calendar/} + '?id=' + ${calendar.id}">Show details</a>
+	<form action="/calendars" class="form-inline">
+		<div class="form-group mb-2">
+			<input type="text" class="form-control" name="name"
+				placeholder="Search Calendar" /> <input type="submit" value="Search"
+				class="btn btn-primary" />
 		</div>
-	</div>
+	</form>
+	
+	<div class="card">
+				<div class="card card-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Owner</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="calendar:${calendars}">
+								<td th:text="${calendar.id}"></td>
+								<td><a th:href="@{/calendar/} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
+								<td th:text="${calendar.owner.username}"></td>
+							</tr>
+						</tbody>
+	
+					</table>
+				</div>
+			</div>
 </div>
 

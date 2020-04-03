@@ -7,6 +7,7 @@
     <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
                 Utilisateur: <span sec:authentication="name">[]</span>
                 Roles: <span sec:authentication="principal.authorities"></span> 
+                Salut
         <div>
             <form action="#" th:action="@{/logout}" method="post"> 
                 <input type="submit" value="Logout" />
