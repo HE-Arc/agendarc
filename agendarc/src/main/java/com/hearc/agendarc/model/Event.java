@@ -1,5 +1,6 @@
 package com.hearc.agendarc.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Event {
     private String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private LocalDate date;
 
     private String details;
 
@@ -49,12 +50,12 @@ public class Event {
 		this.name = name;
     }
     
-    public Date getDate()
+    public LocalDate getDate()
     {
         return date;
     }
 
-    public void setDate(Date date)
+    public void setDate(LocalDate date)
     {
         this.date = date;
     }
