@@ -1,6 +1,7 @@
 package com.hearc.agendarc.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -21,12 +22,15 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String title;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date;
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    //private LocalDate date;
 
-    private String details;
+    private LocalDateTime start;
+    private LocalDateTime finish;
+
+    private String description;
 
     @ManyToOne
     private User creator;
@@ -42,14 +46,14 @@ public class Event {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
     }
-    
+    /*
     public LocalDate getDate()
     {
         return date;
@@ -58,16 +62,16 @@ public class Event {
     public void setDate(LocalDate date)
     {
         this.date = date;
+    }*/
+
+    public String getDescription()
+    {
+        return description;
     }
 
-    public String getDetails()
+    public void setDescription(String description)
     {
-        return details;
-    }
-
-    public void setDetails(String details)
-    {
-        this.details = details;
+        this.description = description;
     }
 
     public User getCreator()
@@ -89,4 +93,26 @@ public class Event {
     {
         this.calendar = calendar;
     }
+
+    public LocalDateTime getStart() {
+		return start;
+	}
+
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
+
+	public LocalDateTime getFinish() {
+		return finish;
+	}
+
+	public void setFinish(LocalDateTime finish) {
+		this.finish = finish;
+    }
+    
+    @Override
+	public String toString() {
+		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", start=" + start
+				+ ", finish=" + finish + "]";
+	} 	
 }

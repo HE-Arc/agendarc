@@ -1,6 +1,6 @@
 package com.hearc.agendarc;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -52,43 +52,50 @@ public class AppConfig {
         calendarRepository.save(c1);
 
     
-        LocalDate localDate = LocalDate.now();
+        LocalDateTime start = LocalDateTime.of(2020, 4, 9, 10, 0, 0);
+        LocalDateTime stop = LocalDateTime.of(2020, 4, 9, 11, 0, 0);
 
         final Event e1 = new Event();
-        e1.setName("Suisse-Italie");
-        e1.setDate(localDate);
+        e1.setTitle("Suisse-Italie");
+        //e1.setDate(localDate);
+        e1.setStart(start);
+        e1.setFinish(stop);
         e1.setCalendar(c);
-        e1.setDetails("Match des 8emes de finale");
+        e1.setDescription("Match des 8emes de finale");
         eventRepository.save(e1);
         
-        final Event e2 = new Event();
-        e2.setName("France-Allemagne");
-        e2.setDate(localDate);
-        e2.setCalendar(c);
-        e2.setDetails("Match de poule");
-        eventRepository.save(e2);
+        start = LocalDateTime.of(2020, 4, 10, 10, 0, 0);
+        stop = LocalDateTime.of(2020, 4, 10, 11, 0, 0);
 
+        final Event e2 = new Event();
+        e2.setTitle("France-Allemagne");
+        e2.setStart(start);
+        e2.setFinish(stop);
+        e2.setCalendar(c);
+        e2.setDescription("Match de poule");
+        eventRepository.save(e2);
+/*
         final Event e3 = new Event();
         e3.setName("Serbie-Albanie");
-        e3.setDate(localDate);
+        //e3.setDate(localDate);
         e3.setCalendar(c);
         e3.setDetails("Match de catch");
         eventRepository.save(e3);
 
         final Event e4 = new Event();
         e4.setName("Federer-Nadal");
-        e4.setDate(localDate);
+        //e4.setDate(localDate);
         e4.setCalendar(c1);
         e4.setDetails("Match pour la médaille d\'or ");
         eventRepository.save(e4);
 
         final Event e5 = new Event();
         e5.setName("Djokovic-Stanimal");
-        e5.setDate(localDate);
+        //e5.setDate(localDate);
         e5.setCalendar(c1);
         e5.setDetails("Match pour la médaille d\'argent");
         eventRepository.save(e5);
-
+*/
         
         
 	}

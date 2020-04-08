@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CalendarController{
@@ -50,7 +51,7 @@ public class CalendarController{
 	}
 
 	@RequestMapping(value = "/calendar", method=RequestMethod.GET)
-	public String calendar(@RequestParam("id") Long id,Model model) {
+	public String calendar(@RequestParam("id") Long id, Model model) {
 		Calendar calendar = calendarRepository.findById(id).get();
 		model.addAttribute("calendar", calendar);
 		List<Event> events = eventRepository.findByCalendar(calendar);
