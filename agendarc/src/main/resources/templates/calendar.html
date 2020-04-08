@@ -33,6 +33,13 @@
 			defaultDate: '2019-06-01',
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
+			eventClick: function(info) {
+				var eventObj = info.id;
+				var url = "http://"+window.location.host + "/event/?id="+info.id
+				window.open(url);
+				//alert('Clicked ' + window.location.host);
+				
+			},
 			events: events
 				//color: 'blue',   // a non-ajax option
 				//textColor: 'white' // a non-ajax option

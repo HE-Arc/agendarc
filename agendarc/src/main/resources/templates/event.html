@@ -1,0 +1,10 @@
+
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+	<h1 th:text="${event.title}"></h1>
+	<h4 th:text="${event.start}"></h4>
+	<h4 th:text="${event.finish}"></h4>
+	<p th:text="${event.description}"></p>
+</div>
+

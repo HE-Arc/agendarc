@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -61,5 +62,12 @@ public class EventController{
 		eventRepository.save(event);
 
 		return "redirect:/";
+	}
+
+	
+	@RequestMapping(value = "/event", method=RequestMethod.GET)
+	public String event(@RequestParam("id") Long id, Model model) {
+		model.addAttribute("event", eventRepository.findById(id).get());
+		return "event";
 	}
 }
