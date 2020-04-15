@@ -10,4 +10,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface EventRepository extends CrudRepository<Event, Long>{
 
     List<Event> findByCalendar(Calendar calendar);
+
+	Event findById(int id);
 }

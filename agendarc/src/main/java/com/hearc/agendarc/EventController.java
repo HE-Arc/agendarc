@@ -13,7 +13,9 @@ import com.hearc.agendarc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,5 +71,17 @@ public class EventController{
 	public String event(@RequestParam("id") Long id, Model model) {
 		model.addAttribute("event", eventRepository.findById(id).get());
 		return "event";
+	}
+
+	// return here calendar/?id=1
+	@RequestMapping(value="/delete",method=RequestMethod.GET)
+	public String deleteEvent(@RequestParam("id") Long id)
+	{
+		
+		Event e = eventRepository.findById(id).get();
+		Long idCal=e.getCalendar().getId();
+
+		eventRepository.delete(e);
+		return "redirect:/calendar?id="+idCal;
 	}
 }

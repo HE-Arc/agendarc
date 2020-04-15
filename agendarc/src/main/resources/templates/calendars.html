@@ -25,7 +25,7 @@
 						<tbody>
 							<tr th:each="calendar:${calendars}">
 								<td th:text="${calendar.id}"></td>
-								<td><a th:href="@{/calendar/} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
+								<td><a th:href="@{/calendar} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
 								<td th:text="${calendar.owner.username}"></td>
 							</tr>
 						</tbody>

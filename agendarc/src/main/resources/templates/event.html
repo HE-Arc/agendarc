@@ -7,5 +7,8 @@
 	<h4 >Fin de l'événement le <span th:text="${#temporals.format(event.finish, 'dd-MM-yyyy')}"></span> a <span th:text="${#temporals.format(event.finish, 'HH:mm')}"></span></h4>
 
 	<p> Descrption de l'événement :  <span th:text="${event.description}"></span></p>
+
+	<td><a th:href="@{/delete} + '?id=' + ${event.id}" >Delete</a></td>
+
 </div>
 
