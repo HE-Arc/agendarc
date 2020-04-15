@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
+
 @Controller
 public class CalendarController{
     
@@ -49,6 +51,17 @@ public class CalendarController{
 	public String liste(Model model, @RequestParam(defaultValue="")  String name,@RequestParam(defaultValue="0") int page) {
 		Pageable pageable = PageRequest.of(page,1);
 		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name,pageable));
+		if(calendarService.findByNameLikeIgnoreCase(name,pageable).getTotalPages()<1)
+		{
+			int totalPages = 0;
+			model.addAttribute("totalPages", totalPages);
+		}
+		else
+		{
+			int totalPages = calendarService.findByNameLikeIgnoreCase(name,pageable).getTotalPages()-1;
+			model.addAttribute("totalPages", totalPages);
+		}
+				
 		model.addAttribute("currentPage", page);
 		return "calendars";
 	}

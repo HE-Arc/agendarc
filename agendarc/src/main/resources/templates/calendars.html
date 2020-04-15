@@ -25,7 +25,7 @@
 						<tbody>
 							<tr th:each="calendar:${calendars}">
 								<td th:text="${calendar.id}"></td>
-								<td><a th:href="@{/calendar} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
+								<td><a th:href="@{/calendar/} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
 								<td th:text="${calendar.owner.username}"></td>
 							</tr>
 						</tbody>
@@ -37,7 +37,7 @@
 			</div>
 			<ul class="nav nav-pills">
 				<li class="nav-item"
-					th:each="i : ${#numbers.sequence(0,calendars.getTotalPages()-1)}">
+					th:each="i : ${#numbers.sequence(0,totalPages)}">
 					<a th:href="@{calendars(page=${i})}" th:text="${i}" class="nav-link"
 					th:classappend="${currentPage}==${i}?'active':''"></a>
 				</li>
