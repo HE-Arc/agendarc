@@ -6,6 +6,8 @@ import java.util.Optional;
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.User;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CalendarRepository extends CrudRepository<Calendar, Long>{
@@ -15,7 +17,7 @@ public interface CalendarRepository extends CrudRepository<Calendar, Long>{
     
     List<Calendar> findByOwner(User owner);
 
-    List<Calendar> findByNameLikeIgnoreCase(String string);
+    Page<Calendar> findByNameLikeIgnoreCase(String string,Pageable Pageable);
 
 
 }

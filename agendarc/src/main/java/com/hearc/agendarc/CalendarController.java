@@ -11,9 +11,10 @@ import com.hearc.agendarc.repository.EventRepository;
 import com.hearc.agendarc.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +46,9 @@ public class CalendarController{
     
     @RequestMapping(value = "/calendars", method=RequestMethod.GET)
 	public String liste(Model model, @RequestParam(defaultValue="")  String name) {
-		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name));
+		Pageable pageable = PageRequest.of(0,1);
+		//model.addAttribute("calendars", calendarRepository.findByNameLikeIgnoreCase(name,pageable));
+		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name,pageable));
 		return "calendars";
 	}
 
