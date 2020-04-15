@@ -73,8 +73,7 @@ public class EventController{
 		return "event";
 	}
 
-	// return here calendar/?id=1
-	@RequestMapping(value="/delete",method=RequestMethod.GET)
+	@RequestMapping(value="/deleteEve",method=RequestMethod.GET)
 	public String deleteEvent(@RequestParam("id") Long id)
 	{
 		

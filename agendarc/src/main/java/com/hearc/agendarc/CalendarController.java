@@ -80,9 +80,13 @@ public class CalendarController{
 		return "redirect:/";
 	}
 
-	/*@GetMapping("/calendar")
-	public String listCalendars(Model model, @RequestParam(defaultValue="")  String name) {
-		model.addAttribute("calendar", userService.findByUsernameLike(name));
-		return "calendars";
-	}*/
+	@RequestMapping(value="/deleteCal",method=RequestMethod.GET)
+	public String deleteEvent(@RequestParam("id") Long id)
+	{
+		
+		Calendar c = calendarRepository.findById(id).get();
+
+		calendarRepository.delete(c);
+		return "redirect:/calendars";
+	}
 }
