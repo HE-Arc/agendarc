@@ -26,8 +26,9 @@ public class Event {
 
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     //private LocalDate date;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime start;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime finish;
 
     private String description;
