@@ -1,0 +1,11 @@
+
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+	<h1 th:text="${event.title}"></h1>
+	<h4 >Début de l'événement le <span th:text="${#temporals.format(event.start, 'dd-MM-yyyy')}"></span> a <span th:text="${#temporals.format(event.start, 'HH:mm')}"></span></h4>
+	<h4 >Fin de l'événement le <span th:text="${#temporals.format(event.finish, 'dd-MM-yyyy')}"></span> a <span th:text="${#temporals.format(event.finish, 'HH:mm')}"></span></h4>
+
+	<p> Descrption de l'événement :  <span th:text="${event.description}"></span></p>
+</div>
+
