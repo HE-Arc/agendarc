@@ -14,10 +14,8 @@ public interface CalendarRepository extends CrudRepository<Calendar, Long>{
     
     Optional<Calendar> findById(Long id);
 
-    
     List<Calendar> findByOwner(User owner);
 
     Page<Calendar> findByNameLikeIgnoreCase(String string,Pageable Pageable);
-
 
 }

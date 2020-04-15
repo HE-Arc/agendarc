@@ -45,10 +45,10 @@ public class CalendarController{
     }
     
     @RequestMapping(value = "/calendars", method=RequestMethod.GET)
-	public String liste(Model model, @RequestParam(defaultValue="")  String name) {
-		Pageable pageable = PageRequest.of(0,1);
-		//model.addAttribute("calendars", calendarRepository.findByNameLikeIgnoreCase(name,pageable));
+	public String liste(Model model, @RequestParam(defaultValue="")  String name,@RequestParam(defaultValue="0") int page) {
+		Pageable pageable = PageRequest.of(page,1);
 		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name,pageable));
+		model.addAttribute("currentPage", page);
 		return "calendars";
 	}
 
