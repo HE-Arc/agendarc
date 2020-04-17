@@ -82,6 +82,8 @@
 		<div>
 			<p>Created by <span th:text="${calendar.owner.username}"></span> </p>
 			<td><a th:href="@{/deleteCal} + '?id=' + ${calendar.id}" >Delete</a></td>
+			<td><a th:href="@{/updateCalendar}+ '?id=' + ${calendar.id}" >Update</a></td>
+			<td><a th:href="@{/createEvent}" >Create new event</a></td>
 
 			<ul th:each=" user : ${calendar.users}">
 				<li th:text="${user.username}"></li>

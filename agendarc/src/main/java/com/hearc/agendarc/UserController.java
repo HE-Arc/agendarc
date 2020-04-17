@@ -45,10 +45,10 @@ public class UserController {
     	return "profile";
     }
     
-	@GetMapping("/users")
+	/*@GetMapping("/users")
 	public String listUsers(Model model, @RequestParam(defaultValue="")  String username) {
 		model.addAttribute("users", userService.findByUsernameLike(username));
 		return "users";
-	}
+	}*/
 
 }

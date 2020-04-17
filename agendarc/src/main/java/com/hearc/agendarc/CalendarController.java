@@ -17,12 +17,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import ch.qos.logback.core.joran.conditional.ElseAction;
 
 @Controller
 public class CalendarController{
@@ -84,14 +85,33 @@ public class CalendarController{
 	}
 
 	@PostMapping("/newCalendar")
-	public String newCalendar(@ModelAttribute ("calendar") Calendar calendar, Principal principal) {
+	public String newCalendar(Model model,@ModelAttribute ("calendar") Calendar calendar, Principal principal) {
+
 		User user = userRepository.findByUsername(principal.getName());
+
 		calendar.setOwner(user);
 
 		calendarRepository.save(calendar);
 
 		return "redirect:/";
 	}
+
+	@RequestMapping(value="/updateCalendar",method=RequestMethod.GET)
+	public String update(Model model,@RequestParam("id") Long id)
+	{
+		Calendar c = calendarRepository.findById(id).get();
+		model.addAttribute("calendar", c);
+		return "updateCalendar";
+	}
+
+	@PostMapping(path="/updateCalendar")
+	public String updateCalendar(@ModelAttribute ("calendar") Calendar calendar) {
+
+	calendarRepository.save(calendar);
+	return "redirect:/calendars";
+	}
+
+	
 
 	@RequestMapping(value="/deleteCal",method=RequestMethod.GET)
 	public String deleteEvent(@RequestParam("id") Long id)
