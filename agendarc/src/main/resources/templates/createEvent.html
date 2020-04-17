@@ -16,7 +16,7 @@
             finish.value = date + " "+time+":00";
         }
     </script>
-	<h1>Création de calendrier</h1>
+	<h1>Création d'événement</h1>
     <form th:action="@{/createEvent}" action="#" method="post">
     	<p>Nom de l'événement: <input type="text" th:field="${event.title}" required/></p>
         <p>Date début: <input id="dateStart" type="date"  onchange="updateStart()" required/></p>
@@ -31,7 +31,7 @@
         <input type="hidden" id="start" name="start" value="" th:field="${event.start}">
         <input type="hidden" id="finish" name="finish" value="" th:field="${event.finish}">
 
-        <p><input type="submit" value="Submit" /></p>
+        <p><input type="submit" value="Ajouter" /></p>
     </form>
 
 </div>>

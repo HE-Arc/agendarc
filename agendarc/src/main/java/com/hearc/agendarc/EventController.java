@@ -83,4 +83,21 @@ public class EventController{
 		eventRepository.delete(e);
 		return "redirect:/calendar?id="+idCal;
 	}
+
+	@RequestMapping(value="/updateEvent",method=RequestMethod.GET)
+	public String update(Model model,@RequestParam("id") Long id)
+	{
+		Event e = eventRepository.findById(id).get();
+		model.addAttribute("event", e);
+		return "updateEvent";
+	}
+
+	@PostMapping(path="/updateEvent")
+	public String updateCalendar(@ModelAttribute ("event") Event event) {
+
+		eventRepository.save(event);
+		Long idCal=event.getCalendar().getId();
+
+		return "redirect:/calendar?id="+idCal;
+	}
 }

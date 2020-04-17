@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
+    <script>
+        function updateStart() {
+            var start = document.getElementById("start");
+            var date = document.getElementById("dateStart").value;
+            var time = document.getElementById("timeStart").value;
+            start.value = date + " "+time+":00";
+            console.log(start.value);
+        }
+        function updateFinish() {
+            var finish = document.getElementById("finish");
+            var date = document.getElementById("dateFinish").value;
+            var time = document.getElementById("timeFinish").value;
+            finish.value = date + " "+time+":00";
+        }
+    </script>
+	<h1>Modification d'événement</h1>
+    <form th:action="@{/updateEvent}" action="#" th:object="${event}" method="post">
+
+
+    	<p>Nom de l'événement: <input type="text" th:value="${event.title}" th:field="*{title}" required/></p>
+        <p>Date début: <input id="dateStart"  type="date" th:value="${#temporals.format(event.start, 'yyyy-MM-dd')}" onchange="updateStart()" required/></p>
+        <p>Heure début: <input id="timeStart"type="time" th:value="${#temporals.format(event.start, 'HH:mm')}" onchange="updateStart()" required/></p>
+        <p>Date fin: <input id="dateFinish" type="date" th:value="${#temporals.format(event.finish, 'yyyy-MM-dd')}" onchange="updateFinish()" required/></p>
+        <p>Heure fin: <input id="timeFinish"  type="time" th:value="${#temporals.format(event.finish, 'HH:mm')}" onchange="updateFinish()" required/></p>
+    	<p>Détails : <input type="text" th:value="${event.description}" th:field="*{description}" required /></p>
+        <input type="hidden" th:value="${event.id}" th:field="*{id}"/>
+        <input type="hidden" th:value="${event.calendar}" th:field="*{calendar}"/>
+        <input type="hidden" id="start" th:value="${event.start}" name="start" value="" th:field="*{start}">
+        <input type="hidden"  id="finish" th:value="${event.finish}" name="finish" value="" th:field="*{finish}">
+
+        <p><input type="submit" value="Modifier" /></p>
+    </form>
+
+</div>>
